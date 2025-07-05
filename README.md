@@ -69,13 +69,13 @@ my-mcp-server/
 
 选择合适的model
 
-![[Pasted image 20250705134808.png]]
+![](imgs/Pasted image 20250705134808.png)
 
 打开 mcp server
 
-![[Pasted image 20250705134844.png]]
+![](imgs/Pasted image 20250705134844.png)
 
-![[Pasted image 20250705134935.png]]
+![](imgs/Pasted image 20250705134935.png)
 
 
 
@@ -100,7 +100,7 @@ my-mcp-server/
 
 创建成功后
 
-![[Pasted image 20250705135014.png]]
+![](imgs/Pasted image 20250705135014.png)
 
 ## ✅ MCP 工具测试流程
 
