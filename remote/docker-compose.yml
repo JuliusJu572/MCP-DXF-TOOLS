@@ -1,0 +1,42 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  dxf-service:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      # Gunicorn 配置
+      - WORKERS=4
+      # 应用配置
+      - PYTHONUNBUFFERED=1
+      - UPLOAD_DIR=/app/uploads
+      - RESULT_DIR=/app/results
+    volumes:
+      # 持久化存储（重要！）
+      - ./data/uploads:/app/uploads
+      - ./data/results:/app/results
+      # 可选：配置文件挂载
+      - ./gunicorn.conf.py:/app/gunicorn.conf.py
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    # 资源限制（可选）
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '2.0'
+        reservations:
+          memory: 512M
+          cpus: '0.5'
+
+
+volumes:
+  uploads:
+  results:
